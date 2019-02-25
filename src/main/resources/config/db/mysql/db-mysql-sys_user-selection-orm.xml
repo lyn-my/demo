@@ -5,12 +5,28 @@
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd"
         version="2.2"
 >
-    <named-native-query name="Sys_UserRepository.findByUserId" >
+    <named-native-query name="Sys_UserRepository.findByUserId"  >
+        <description>获取用户信息</description>
         <query>
             <![CDATA[
-            select id,name from sys_user t where if(:id!=null, t.id=:id,1=1)
+                select id,name from Sys_User t
             ]]>
         </query>
     </named-native-query>
-
+    <named-native-query name="Sys_UserRepository.findByUserId2"  >
+        <description>获取用户信息</description>
+        <query>
+            <![CDATA[
+                select id,name from Sys_User t
+            ]]>
+        </query>
+    </named-native-query>
+    <named-native-query name="Sys_UserRepository.findByUserIdCount">
+        <description>获取用户信息(COUNT)</description>
+        <query>
+            <![CDATA[
+                select count(1) from Sys_User t
+            ]]>
+        </query>
+    </named-native-query>
 </entity-mappings>

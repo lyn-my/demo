@@ -6,21 +6,21 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Map;
 
-@Repository
-public interface Sys_UserRepository extends JpaRepository <Sys_User,Long> {
-    List<Sys_User> findByNameLike(String nameLike);
 
+public interface Sys_UserRepository extends JpaRepository <Sys_User,Long> {
+
+
+    List<Sys_User> findByNameLike(String nameLike);
 
     @Query(name = "Sys_UserRepository.findByUserId",nativeQuery = true)
     List<Map> findByUserId(@Param("id") Long userId);
 
 
-    @Query(value = "select su.id,su.name from Sys_User su ",nativeQuery = true)
+    @Query(name = "Sys_UserRepository.findByUserId2" , countName = "Sys_UserRepository.findByUserIdCount")
+        // @Query(name = "Sys_UserRepository.findByUserId" , countQuery = "select count(1) from Sys_User t",nativeQuery = true)
     Page<Map> findByUserId(@Param("id") Long userId, Pageable pageable);
 
 }

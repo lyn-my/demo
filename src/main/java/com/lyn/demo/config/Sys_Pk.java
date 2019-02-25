@@ -14,10 +14,10 @@ public class Sys_Pk {
     @GenericGenerator( name="id_gen", strategy="enhanced-table",
             parameters = {
                     @Parameter( name = "table_name", value = "SYS_PK"),
-                    @Parameter( name ="value_column_name", value = "id_value"),
+                    @Parameter( name = "value_column_name", value = "id_value"),
                     @Parameter( name = "segment_column_name",value = "id_key"),
                     @Parameter( name = "segment_value", value = "t_demo"),
-                    @Parameter( name = "increment_size", value = "10"),
+                    @Parameter( name = "increment_size", value = "50"),
                     @Parameter( name = "optimizer",value = "pooled-lo")
             })
     @GeneratedValue(generator="id_gen")

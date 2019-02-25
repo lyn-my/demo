@@ -2,6 +2,7 @@ package com.lyn.demo.rest;
 
 import com.lyn.demo.domain.Sys_User;
 import com.lyn.demo.repository.Sys_UserRepository;
+import com.lyn.demo.service.Sys_UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,12 +19,24 @@ public class Sys_UserController {
     @Autowired
     private Sys_UserRepository userRepository;
 
+    @Autowired
+    private Sys_UserService sys_UserService;
+
     @RequestMapping("/Save")
-    public Sys_User test(){
+    public Sys_User save(){
         Sys_User sys_user = new Sys_User();
         sys_user.setName("价格部分");
         userRepository.save(sys_user);
         return sys_user;
+    }
+    @RequestMapping("/savePl")
+    public String savePl(){
+        Long a = System.currentTimeMillis();
+        //sys_UserService.savePl();
+        sys_UserService.savePlTWO();
+        Long b = System.currentTimeMillis();
+        System.out.println("时间>>>>>>>>>>>>>>>>>>"+(b-a));
+        return "成功批量保存";
     }
 
 

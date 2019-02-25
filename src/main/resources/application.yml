@@ -38,8 +38,10 @@ spring:
       - config/db/mysql/db-mysql-sys_user-selection-orm.xml
     properties:
       hibernate:
-        show_sql: true
+        show_sql: false
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        jdbc:
+          batch_size: 50
     hibernate:
       ddl-auto: update
       naming:
